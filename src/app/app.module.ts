@@ -9,14 +9,14 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { LeagueDashboardComponent } from './components/league-dashboard/league-dashboard.component';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
 import { GridrenderComponent } from './components/gridrender/gridrender.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-    ])
+    RouterModule.forRoot([{ path: '', component: ProductListComponent }]),
+    BrowserAnimationsModule,
   ],
   declarations: [
     AppComponent,
@@ -24,14 +24,11 @@ import { GridrenderComponent } from './components/gridrender/gridrender.componen
     ProductListComponent,
     LeagueDashboardComponent,
     GameDetailsComponent,
-    GridrenderComponent
+    GridrenderComponent,
   ],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
 
 /*
 Copyright Google LLC. All Rights Reserved.
