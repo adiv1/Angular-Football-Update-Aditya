@@ -13,6 +13,7 @@ export class GameDetailsComponent {
   public columnDefs: ColDef[] = gamedetailsGridColumns;
   public rowData = [];
   public teamId: number | undefined;
+
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -28,7 +29,6 @@ export class GameDetailsComponent {
   getTeamFixtures(teamId: Number) {
     this.footBallAPI.getTopList(teamId).subscribe((data: any) => {
       this.rowData = data.response;
-      // this.country = data.response[0].league.id;
       console.log(data);
     });
   }
