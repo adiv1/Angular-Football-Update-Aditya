@@ -1,1 +1,31 @@
-<p>league-dashboard works!</p>
+<nav
+  class="customNav"
+  mat-tab-nav-bar
+  backgroundColor="primary"
+  [tabPanel]="tabPanel"
+>
+  <a
+    mat-tab-link
+    *ngFor="let nav of navlinks"
+    (click)="activeLink = nav; getStandings(nav.url)"
+    [active]="activeLink == nav"
+  >
+    {{ nav.title }}
+  </a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+<h4 class="leaguesHeading" *ngIf="isVisible">
+  Top League : <b>{{ allData.league.name }}</b>
+</h4>
+<h4 class="currentSeason" *ngIf="isVisible">
+  Current Season : <b>{{ allData.league.season }}</b>
+</h4>
+<ag-grid-angular
+  *ngIf="this.rowData.length && isVisible"
+  style="width: 70%; height: 65%"
+  class="ag-theme-alpine customGrid"
+  [columnDefs]="columnDefs"
+  [rowData]="rowData"
+></ag-grid-angular>
+
+<p *ngIf="!isVisible" class="noRecords">No Records Found Please try Again...</p>
