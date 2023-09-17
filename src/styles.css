@@ -189,3 +189,6 @@ span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
   margin-top: -40px !important;
   margin-right: 360px !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
