@@ -1,4 +1,6 @@
 /* Global Styles */
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 * {
   font-family: 'Roboto', Arial, sans-serif;
@@ -17,7 +19,7 @@ body {
   flex-direction: row;
 }
 
-router-outlet + *  {
+router-outlet + * {
   padding: 0 16px;
 }
 
@@ -31,7 +33,8 @@ h2 {
   font-size: 20px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: lighter;
 }
 
@@ -58,7 +61,7 @@ input {
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 16px;
-  border: 1px solid #BDBDBD;
+  border: 1px solid #bdbdbd;
 }
 
 label {
@@ -70,7 +73,8 @@ label {
 }
 
 /* Button */
-.button, button {
+.button,
+button {
   display: inline-flex;
   align-items: center;
   padding: 8px 16px;
@@ -82,12 +86,14 @@ label {
   border: none;
 }
 
-.button:hover, button:hover {
+.button:hover,
+button:hover {
   opacity: 0.8;
   font-weight: normal;
 }
 
-.button:disabled, button:disabled {
+.button:disabled,
+button:disabled {
   opacity: 0.5;
   cursor: auto;
 }
@@ -124,7 +130,8 @@ app-top-bar h1 {
 
 /* Checkout Cart, Shipping Prices */
 
-.cart-item, .shipping-item {
+.cart-item,
+.shipping-item {
   width: 100%;
   min-width: 400px;
   max-width: 450px;
@@ -134,14 +141,51 @@ app-top-bar h1 {
   padding: 16px 32px;
   margin-bottom: 8px;
   border-radius: 2px;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
-
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+.customNav {
+  width: 70%;
+  margin-left: 200px;
+}
+.customGrid {
+  width: 70%;
+  margin-left: 200px;
+  margin-top: 25px;
+}
+.btn-custom {
+  margin-top: 25px;
+  margin-right: 250px;
+  float: right;
+}
+
+.noRecords {
+  margin-top: 250px !important;
+  margin-left: 550px !important;
+}
+
+span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
+  border: #ef7b29 solid 3px !important;
+}
+.leaguesHeading {
+  margin-top: 25px !important;
+  margin-left: 200px !important;
+}
+.currentSeason {
+  float: right;
+  margin-top: -40px !important;
+  margin-right: 360px !important;
+}
