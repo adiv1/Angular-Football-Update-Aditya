@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
 import { ColDef } from 'ag-grid-community';
 import { FootballgameService } from 'src/app/services/footballgame.service';
 import { navtabData } from './dashboard';
 import { gridColumns } from './grid-columns';
 import { StandingsData } from 'src/app/models/league';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-league-dashboard',
