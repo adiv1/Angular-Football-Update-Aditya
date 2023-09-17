@@ -4,11 +4,12 @@ import { ColDef } from 'ag-grid-community';
 import { FootballgameService } from 'src/app/services/footballgame.service';
 import { navtabData } from './dashboard';
 import { gridColumns } from './grid-columns';
+import { StandingsData } from 'src/app/models/league';
 
 @Component({
   selector: 'app-league-dashboard',
   templateUrl: './league-dashboard.component.html',
-  styleUrls: ['./league-dashboard.component.css']
+  styleUrls: ['./league-dashboard.component.css'],
 })
 export class LeagueDashboardComponent {
   background: ThemePalette = undefined;
@@ -26,20 +27,19 @@ export class LeagueDashboardComponent {
       ? this.footBallApi.prevSelectedLeague
       : 'england';
     this.getStandings(leagueKey);
-    this.links.forEach((element) => {
+    this.navlinks.forEach((element) => {
       console.log(element);
-      if (element.apiDef == this.footBallApi.prevSelectedLeague) {
+      if (element.url == this.footBallApi.prevSelectedLeague) {
         this.activeLink = element;
       }
     });
   }
 
   getStandings(country: string) {
-    this.footBallApi.getStandingsData(country).subscribe((data: any) => {
+    this.footBallApi.getTeamStandings(country).subscribe((data: any) => {
       this.rowData = data.response[0].league.standings[0];
-      this.allData = data.response[0]
+      this.allData = data.response[0];
       this.isVisible = this.rowData.length ? true : false;
     });
   }
 }
-
