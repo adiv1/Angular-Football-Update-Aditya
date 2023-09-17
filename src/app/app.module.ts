@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { LeagueDashboardComponent } from './components/league-dashboard/league-dashboard.component';
+import { GameDetailsComponent } from './components/game-details/game-details.component';
+import { GridrenderComponent } from './components/gridrender/gridrender.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,10 @@ import { ProductListComponent } from './product-list/product-list.component';
   declarations: [
     AppComponent,
     TopBarComponent,
-    ProductListComponent
+    ProductListComponent,
+    LeagueDashboardComponent,
+    GameDetailsComponent,
+    GridrenderComponent
   ],
   bootstrap: [
     AppComponent
