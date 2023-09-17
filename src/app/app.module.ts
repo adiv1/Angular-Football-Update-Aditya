@@ -10,12 +10,26 @@ import { LeagueDashboardComponent } from './components/league-dashboard/league-d
 import { GameDetailsComponent } from './components/game-details/game-details.component';
 import { GridrenderComponent } from './components/gridrender/gridrender.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { AgGridModule } from 'ag-grid-angular';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([{ path: '', component: ProductListComponent }]),
+    MatTabsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    AgGridModule,
+    RouterModule.forRoot([
+      { path: '', component: LeagueDashboardComponent },
+      { path: 'leagues', component: LeagueDashboardComponent },
+      { path: 'gamedetails/:teamId', component: GameDetailsComponent },
+    ]),
     BrowserAnimationsModule,
   ],
   declarations: [
