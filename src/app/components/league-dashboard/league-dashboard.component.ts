@@ -3,7 +3,11 @@ import { ColDef } from 'ag-grid-community';
 import { FootballgameService } from 'src/app/services/footballgame.service';
 import { navtabData } from './dashboard';
 import { gridColumns } from './grid-columns';
-import { StandingsData, responseApiObj } from 'src/app/models/league';
+import {
+  LeagueData,
+  StandingsData,
+  responseApiObj,
+} from 'src/app/models/league';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({
@@ -17,7 +21,7 @@ export class LeagueDashboardComponent {
   activeLink = this.navlinks[0];
   public columnDefs: ColDef[] = gridColumns;
   public rowData: StandingsData[] = [];
-  leagues: StandingsData[] = [];
+  leagues: LeagueData[] = [];
   isVisible: boolean = false;
   allData: any = [];
   constructor(private footBallApi: FootballgameService) {}
@@ -36,12 +40,15 @@ export class LeagueDashboardComponent {
   }
 
   getStandings(country: string) {
-    this.footBallApi.getTeamStandings(country).subscribe((data:responseApiObj ) => {
-      if (data.response.length) {
-        this.allData = data.response[0].league.standings;
-        this.rowData = this.allData[0];
-      }
-      this.isVisible = this.rowData.length ? true : false;
-    });
+    this.footBallApi
+      .getTeamStandings(country)
+      .subscribe((data: responseApiObj) => {
+        if (data.response.length) {
+          this.allData = data.response[0].league.standings;
+          this.rowData = this.allData[0];
+        }
+        this.allData = data.response[0];
+        this.isVisible = this.rowData.length ? true : false;
+      });
   }
 }
