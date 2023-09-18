@@ -9,8 +9,6 @@ import { responseApiFixturesObj } from '../models/fixtures';
 })
 export class FootballgameService {
   private API = 'https://v3.football.api-sports.io';
-  //private apiKey = '73effe53b514fe164eb475247efecbe2';
-  private apiKey = '';
   private readonly currentYear: number = new Date().getFullYear();
   private readonly gameIds: { [league: string]: number } = {
     england: 39,
