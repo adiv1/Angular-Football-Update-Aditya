@@ -180,8 +180,11 @@ body {
 span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
   border: #d37c19 solid 3px !important;
 }
-.mat-mdc-tab-header-with-background-background-color {
-  background-color: #1dbd2a !important;
+
+.mat-mdc-tab-group.mat-background-primary,
+.mat-mdc-tab-nav-bar.mat-background-primary {
+  --mat-mdc-tab-header-with-background-background-color: #b5b13f !important;
+  --mat-mdc-tab-header-with-background-foreground-color: #fff;
 }
 .leaguesHeading {
   margin-top: 25px !important;
