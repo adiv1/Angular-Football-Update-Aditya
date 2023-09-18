@@ -10,7 +10,7 @@ export class FootballgameService {
   //private apiKey = '73effe53b514fe164eb475247efecbe2';
   private apiKey = '';
   private readonly currentYear: number = new Date().getFullYear(); // Get the current year
-  private readonly gameIds: any = {
+  private readonly gameIds: { [league: string]: number } = {
     england: 39,
     spain: 107,
     germany: 78,
