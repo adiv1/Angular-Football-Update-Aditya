@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { responseApiObj } from '../models/league';
+import { responseApiFixturesObj } from '../models/fixtures';
 
 @Injectable({
   providedIn: 'root',
@@ -23,38 +25,20 @@ export class FootballgameService {
   getTeamStandings(
     league: string,
     season: string = this.currentYear.toString()
-  ) {
+  ): Observable<responseApiObj> {
     this.prevSelectedLeague = league;
-    const headers = new HttpHeaders({
-      'x-rapidapi-host': 'v3.football.api-sports.io/fixtures',
-      'x-rapidapi-key': this.apiKey,
-    });
-    return this.http
-      .get(
-        `${this.API}/standings?league=${this.gameIds[league]}&season=${season}`,
-        { headers }
-      )
-      .pipe(
-        map((response) => {
-          return response;
-        })
-      );
+
+    return this.http.get<responseApiObj>(
+      `${this.API}/standings?league=${this.gameIds[league]}&season=${season}`
+    );
   }
 
-  getTopList(teamId: Number, season: string = this.currentYear.toString()) {
-    const headers = new HttpHeaders({
-      'x-rapidapi-host': 'v3.football.api-sports.io/fixtures',
-      'x-rapidapi-key': this.apiKey,
-    });
-
-    return this.http
-      .get(`${this.API}/fixtures?team=${teamId}&season=${season}&last=10`, {
-        headers,
-      })
-      .pipe(
-        map((response) => {
-          return response;
-        })
-      );
+  getTopList(
+    teamId: Number,
+    season: string = this.currentYear.toString()
+  ): Observable<responseApiFixturesObj> {
+    return this.http.get<responseApiFixturesObj>(
+      `${this.API}/fixtures?team=${teamId}&season=${season}&last=10`
+    );
   }
 }

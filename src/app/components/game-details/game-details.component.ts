@@ -3,6 +3,7 @@ import { ColDef } from 'ag-grid-community';
 import { gamedetailsGridColumns } from './game-details';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FootballgameService } from 'src/app/services/footballgame.service';
+import { fixtures, responseApiFixturesObj } from 'src/app/models/fixtures';
 
 @Component({
   selector: 'app-game-details',
@@ -11,7 +12,7 @@ import { FootballgameService } from 'src/app/services/footballgame.service';
 })
 export class GameDetailsComponent {
   public columnDefs: ColDef[] = gamedetailsGridColumns;
-  public rowData = [];
+  public rowData: fixtures[] = [];
   public teamId: number | undefined;
 
   constructor(
@@ -27,9 +28,11 @@ export class GameDetailsComponent {
     });
   }
   getTeamFixtures(teamId: Number) {
-    this.footBallAPI.getTopList(teamId).subscribe((data: any) => {
-      this.rowData = data.response;
-      console.log(data);
-    });
+    this.footBallAPI
+      .getTopList(teamId)
+      .subscribe((data: responseApiFixturesObj) => {
+        this.rowData = data.response;
+        console.log(data);
+      });
   }
 }

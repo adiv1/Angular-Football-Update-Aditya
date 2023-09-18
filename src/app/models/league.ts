@@ -1,74 +1,84 @@
-export class LeagueData {
-  league!: {
-    id: number;
-    name: string;
-    country: string;
-    logo: string;
-    flag: string;
-    season: number;
-    standings: StandingsData[][];
+export interface StandingsData {
+  rank: number;
+  team: team;
+  points: number;
+  goalsDiff: number;
+  group: string;
+  form: string;
+  status: string;
+  description: string;
+  all: all;
+  home: home;
+  away: away;
+  update: string;
+}
+
+export interface responseApiObj {
+  get: string;
+  parameters: parameters[];
+  errors: errors[];
+  results: number;
+  paging: paging[];
+  response: LeagueData[];
+}
+export interface resObj {}
+
+export interface LeagueData {
+  league: leagueObj;
+}
+export interface leagueObj {
+  id: number;
+  name: string;
+  country: string;
+  logo: string;
+  flag: string;
+  season: number;
+  standings: StandingsData[];
+}
+export interface errors {
+  token: string;
+}
+export interface paging {
+  current: number;
+  total: number;
+}
+export interface parameters {
+  league: string;
+  season: string;
+}
+export interface team {
+  id: number;
+  name: string;
+  logo: string;
+}
+export interface all {
+  played: number;
+  win: number;
+  draw: number;
+  lose: number;
+  goals: {
+    for: number;
+    against: number;
+  };
+}
+export interface home {
+  played: number;
+  win: number;
+  draw: number;
+  lose: number;
+  goals: {
+    for: number;
+    against: number;
   };
 }
 
-export class StandingsData {
-  rank!: number;
-  team!: {
-    id: number;
-    name: string;
-    logo: string;
+export interface away {
+  played: number;
+  win: number;
+  draw: number;
+  lose: number;
+  goals: {
+    for: number;
+    against: number;
   };
-  points!: number;
-  goalsDiff!: number;
-  group!: string;
-  form!: string;
-  status!: string;
-  description!: string;
-  all!: {
-    played: number;
-    win: number;
-    draw: number;
-    lose: number;
-    goals: {
-      for: number;
-      against: number;
-    };
-  };
-  home!: {
-    played: number;
-    win: number;
-    draw: number;
-    lose: number;
-    goals: {
-      for: number;
-      against: number;
-    };
-  };
-  away!: {
-    played: number;
-    win: number;
-    draw: number;
-    lose: number;
-    goals: {
-      for: number;
-      against: number;
-    };
-  };
-  update!: string;
-}
-
-export class responseObj {
-  get!: string;
-  parameters!: {
-    league: string;
-    season: string;
-  };
-  errors!: {
-    token?: string;
-  };
-  results!: number;
-  paging!: {
-    current: number;
-    total: number;
-  };
-  response?: [];
 }

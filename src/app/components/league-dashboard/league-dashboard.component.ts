@@ -3,7 +3,7 @@ import { ColDef } from 'ag-grid-community';
 import { FootballgameService } from 'src/app/services/footballgame.service';
 import { navtabData } from './dashboard';
 import { gridColumns } from './grid-columns';
-import { StandingsData } from 'src/app/models/league';
+import { StandingsData, responseApiObj } from 'src/app/models/league';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({
@@ -16,7 +16,7 @@ export class LeagueDashboardComponent {
   navlinks = navtabData;
   activeLink = this.navlinks[0];
   public columnDefs: ColDef[] = gridColumns;
-  public rowData: [] = [];
+  public rowData: StandingsData[] = [];
   leagues: StandingsData[] = [];
   isVisible: boolean = false;
   allData: any = [];
@@ -36,9 +36,11 @@ export class LeagueDashboardComponent {
   }
 
   getStandings(country: string) {
-    this.footBallApi.getTeamStandings(country).subscribe((data: any) => {
-      this.rowData = data.response[0].league.standings[0];
-      this.allData = data.response[0];
+    this.footBallApi.getTeamStandings(country).subscribe((data:responseApiObj ) => {
+      if (data.response.length) {
+        this.allData = data.response[0].league.standings;
+        this.rowData = this.allData[0];
+      }
       this.isVisible = this.rowData.length ? true : false;
     });
   }
