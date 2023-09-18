@@ -23,7 +23,7 @@ export class LeagueDashboardComponent {
   public rowData: StandingsData[] = [];
   leagues: LeagueData[] = [];
   isVisible: boolean = false;
-  allData: any = [];
+  completeData: any = [];
   constructor(private footBallApi: FootballgameService) {}
 
   ngOnInit(): void {
@@ -44,10 +44,10 @@ export class LeagueDashboardComponent {
       .getTeamStandings(country)
       .subscribe((data: responseApiObj) => {
         if (data.response.length) {
-          this.allData = data.response[0].league.standings;
-          this.rowData = this.allData[0];
+          this.completeData = data.response[0].league.standings;
+          this.rowData = this.completeData[0];
         }
-        this.allData = data.response[0];
+        this.completeData = data.response[0];
         this.isVisible = this.rowData.length ? true : false;
       });
   }
