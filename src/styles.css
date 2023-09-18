@@ -178,7 +178,10 @@ body {
 }
 
 span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
-  border: #ef7b29 solid 3px !important;
+  border: #ef9329 solid 3px !important;
+}
+mat-mdc-tab-header-with-background-background-color {
+  background-color: #29ef3a !important;
 }
 .leaguesHeading {
   margin-top: 25px !important;
@@ -190,5 +193,11 @@ span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
   margin-right: 360px !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
